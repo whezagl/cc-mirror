@@ -6,11 +6,11 @@
 
 **Create multiple isolated Claude Code variants with custom providers.**
 
-Run Claude Code with Z.ai, MiniMax, OpenRouter, LiteLLM, or any Anthropic-compatible API — each with its own config, themes, and session storage.
+Run Claude Code with Z.ai, MiniMax, OpenRouter, Claude Code Router, or any Anthropic-compatible API — each with its own config, themes, and session storage.
 
 ## Features
 
-- **Multiple Providers** — Z.ai, MiniMax, OpenRouter, LiteLLM (Ollama, LM Studio, vLLM), or custom
+- **Multiple Providers** — Z.ai, MiniMax, OpenRouter, Claude Code Router, or custom
 - **Complete Isolation** — Each variant has its own config, sessions, and themes
 - **Brand Themes** — Custom color schemes per provider (via tweakcc)
 - **Prompt Packs** — Enhanced system prompts for Z.ai/MiniMax
@@ -51,10 +51,11 @@ npx cc-mirror quick --provider openrouter --api-key "$OPENROUTER_API_KEY" \
   --model-opus "anthropic/claude-3-opus" \
   --model-haiku "anthropic/claude-3-haiku"
 
-# LiteLLM (local LLMs)
-npx cc-mirror quick --provider litellm \
-  --model-sonnet "ollama/llama3.2" \
-  --model-haiku "ollama/llama3.2"
+# Claude Code Router (route to any model)
+npx cc-mirror quick --provider ccrouter \
+  --model-sonnet "deepseek,deepseek-chat" \
+  --model-opus "deepseek,deepseek-reasoner" \
+  --model-haiku "ollama,qwen2.5-coder:latest"
 ```
 
 ## Variant Structure
@@ -95,13 +96,13 @@ minimax                       # If you named it 'minimax'
 ## Options
 
 ```
---provider <name>        zai | minimax | openrouter | litellm | custom
+--provider <name>        zai | minimax | openrouter | ccrouter | custom
 --api-key <key>          Provider API key
 --base-url <url>         Custom API endpoint
 --model-sonnet <name>    Map to sonnet model
 --model-opus <name>      Map to opus model
 --model-haiku <name>     Map to haiku model
---brand <preset>         Theme: auto | none | zai | minimax | openrouter | litellm
+--brand <preset>         Theme: auto | none | zai | minimax | openrouter | ccrouter
 --root <path>            Variants root (default: ~/.cc-mirror)
 --bin-dir <path>         Wrapper dir (default: ~/.local/bin)
 --no-tweak               Skip tweakcc
@@ -116,7 +117,7 @@ minimax                       # If you named it 'minimax'
 | Z.ai | API Key | Auto | Enhanced prompts, shell env support |
 | MiniMax | API Key | Auto | Enhanced prompts, MCP server pre-configured |
 | OpenRouter | Auth Token | Required | Works with any model on OpenRouter |
-| LiteLLM | Optional | Required | For Ollama, LM Studio, vLLM, etc. |
+| CCRouter | Optional | Required | Route to any provider via Claude Code Router |
 
 ## Updating Variants
 
@@ -137,7 +138,7 @@ Each provider has an optional color theme:
 - **zai** — Dark carbon with gold accents
 - **minimax** — Coral/red/orange spectrum
 - **openrouter** — Teal/cyan (matching ASCII splash)
-- **litellm** — Sky blue accents
+- **ccrouter** — Sky blue accents
 
 Themes are applied via [tweakcc](https://github.com/tweak-cc/tweakcc).
 

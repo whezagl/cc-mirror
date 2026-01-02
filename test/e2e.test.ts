@@ -98,11 +98,11 @@ const PROVIDERS = [
     colorCode: '\\x1b[38;5;43m', // Teal
   },
   {
-    key: 'litellm',
-    name: 'LiteLLM',
-    apiKey: '', // Optional for litellm
-    expectedThemeId: 'litellm-sky',
-    expectedSplashStyle: 'litellm',
+    key: 'ccrouter',
+    name: 'Claude Code Router',
+    apiKey: '', // Optional for ccrouter
+    expectedThemeId: 'ccrouter-sky',
+    expectedSplashStyle: 'ccrouter',
     colorCode: '\\x1b[38;5;39m', // Sky blue
   },
 ];
@@ -458,7 +458,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
         zai: /\x1b\[38;5;220m/, // Gold
         minimax: /\x1b\[38;5;203m/, // Coral/salmon red
         openrouter: /\x1b\[38;5;43m/, // Teal
-        litellm: /\x1b\[38;5;39m/, // Sky blue
+        ccrouter: /\x1b\[38;5;39m/, // Sky blue
       };
 
       for (const [providerKey, pattern] of Object.entries(colorPatterns)) {
@@ -475,7 +475,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
         zai: ['███████╗', 'GLM Coding Plan'],
         minimax: ['███╗   ███╗', 'MiniMax-M2.1', 'AGI for All'],
         openrouter: ['██████╗ ██████╗', 'One API', 'Any Model'],
-        litellm: ['██╗     ██╗████████╗', 'Local LLMs', 'Any Backend'],
+        ccrouter: ['██████╗ ██████╗██████╗', 'Claude Code Router', 'Any Model'],
       };
 
       for (const [providerKey, patterns] of Object.entries(asciiPatterns)) {

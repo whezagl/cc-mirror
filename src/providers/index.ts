@@ -27,7 +27,7 @@ export interface ModelOverrides {
   subagentModel?: string;
 }
 
-const LITELLM_AUTH_FALLBACK = 'litellm-proxy';
+const CCROUTER_AUTH_FALLBACK = 'ccrouter-proxy';
 
 const PROVIDERS: Record<string, ProviderTemplate> = {
   zai: {
@@ -80,18 +80,18 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
     authMode: 'authToken',
     requiresModelMapping: true,
   },
-  litellm: {
-    key: 'litellm',
-    label: 'LiteLLM',
-    description: 'LiteLLM proxy for local LLMs (Ollama, LM Studio, vLLM)',
-    baseUrl: 'http://localhost:4000/anthropic',
+  ccrouter: {
+    key: 'ccrouter',
+    label: 'Claude Code Router',
+    description: 'Route requests to any model via Claude Code Router',
+    baseUrl: 'http://127.0.0.1:3456',
     env: {
       API_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
       CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'LiteLLM',
-      CC_MIRROR_SPLASH_STYLE: 'litellm',
+      CC_MIRROR_PROVIDER_LABEL: 'Claude Code Router',
+      CC_MIRROR_SPLASH_STYLE: 'ccrouter',
     },
-    apiKeyLabel: 'LiteLLM API key (optional)',
+    apiKeyLabel: 'CCR API key (optional)',
     authMode: 'authToken',
     requiresModelMapping: true,
     credentialOptional: true,
@@ -176,8 +176,8 @@ export const buildEnv = ({
     const trimmed = normalizeModelValue(apiKey);
     if (trimmed) {
       env.ANTHROPIC_AUTH_TOKEN = trimmed;
-    } else if (providerKey === 'litellm') {
-      env.ANTHROPIC_AUTH_TOKEN = LITELLM_AUTH_FALLBACK;
+    } else if (providerKey === 'ccrouter') {
+      env.ANTHROPIC_AUTH_TOKEN = CCROUTER_AUTH_FALLBACK;
     }
     if (Object.hasOwn(env, 'ANTHROPIC_API_KEY')) {
       delete env.ANTHROPIC_API_KEY;

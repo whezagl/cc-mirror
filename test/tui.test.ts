@@ -129,7 +129,6 @@ test('TUI create flow uses template + no-tweak when selected', async () => {
   await send(app.stdin, enter); // api key
   await send(app.stdin, enter); // root dir
   await send(app.stdin, enter); // bin dir
-  await send(app.stdin, enter); // npm package
   await send(app.stdin, down); // tweakcc? select No
   await send(app.stdin, enter);
   await send(app.stdin, enter); // install dev-browser? default Yes

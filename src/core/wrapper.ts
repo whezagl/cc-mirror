@@ -61,11 +61,11 @@ export const writeWrapper = (
     orSecondary: '\x1b[38;5;49m',     // Bright teal
     orAccent: '\x1b[38;5;37m',        // Deep cyan
     orDim: '\x1b[38;5;30m',           // Muted teal
-    // LiteLLM: Sky blue gradient
-    llmPrimary: '\x1b[38;5;39m',      // Sky blue
-    llmSecondary: '\x1b[38;5;45m',    // Bright cyan
-    llmAccent: '\x1b[38;5;33m',       // Deep blue
-    llmDim: '\x1b[38;5;31m',          // Muted blue
+    // CCRouter: Sky blue gradient
+    ccrPrimary: '\x1b[38;5;39m',      // Sky blue
+    ccrSecondary: '\x1b[38;5;45m',    // Bright cyan
+    ccrAccent: '\x1b[38;5;33m',       // Deep blue
+    ccrDim: '\x1b[38;5;31m',          // Muted blue
     // Default: White/Gray
     defPrimary: '\x1b[38;5;255m',     // White
     defDim: '\x1b[38;5;245m',         // Gray
@@ -133,20 +133,20 @@ export const writeWrapper = (
     'CCMORT',
     '        __cc_show_label="0"',
     '        ;;',
-    "      litellm)",
-    "        cat <<'CCMLLM'",
+    "      ccrouter)",
+    "        cat <<'CCMCCR'",
     '',
-    `${C.llmPrimary}    ██╗     ██╗████████╗███████╗██╗     ██╗     ███╗   ███╗${C.reset}`,
-    `${C.llmPrimary}    ██║     ██║╚══██╔══╝██╔════╝██║     ██║     ████╗ ████║${C.reset}`,
-    `${C.llmSecondary}    ██║     ██║   ██║   █████╗  ██║     ██║     ██╔████╔██║${C.reset}`,
-    `${C.llmSecondary}    ██║     ██║   ██║   ██╔══╝  ██║     ██║     ██║╚██╔╝██║${C.reset}`,
-    `${C.llmAccent}    ███████╗██║   ██║   ███████╗███████╗███████╗██║ ╚═╝ ██║${C.reset}`,
-    `${C.llmAccent}    ╚══════╝╚═╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝${C.reset}`,
+    `${C.ccrPrimary}     ██████╗ ██████╗██████╗  ██████╗ ██╗   ██╗████████╗███████╗██████╗${C.reset}`,
+    `${C.ccrPrimary}    ██╔════╝██╔════╝██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝██╔════╝██╔══██╗${C.reset}`,
+    `${C.ccrSecondary}    ██║     ██║     ██████╔╝██║   ██║██║   ██║   ██║   █████╗  ██████╔╝${C.reset}`,
+    `${C.ccrSecondary}    ██║     ██║     ██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗${C.reset}`,
+    `${C.ccrAccent}    ╚██████╗╚██████╗██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║${C.reset}`,
+    `${C.ccrAccent}     ╚═════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝${C.reset}`,
     '',
-    `${C.llmDim}    ━━━━━━━━━━━━━━${C.llmPrimary}◆${C.llmDim}━━━━━━━━━━━━━━${C.reset}`,
-    `${C.llmSecondary}      Local LLMs ${C.llmDim}━${C.llmSecondary} Any Backend${C.reset}`,
+    `${C.ccrDim}    ━━━━━━━━━━━━━━━━${C.ccrPrimary}◆${C.ccrDim}━━━━━━━━━━━━━━━━${C.reset}`,
+    `${C.ccrSecondary}      Claude Code Router ${C.ccrDim}━${C.ccrSecondary} Any Model${C.reset}`,
     '',
-    'CCMLLM',
+    'CCMCCR',
     '        __cc_show_label="0"',
     '        ;;',
     '      *)',

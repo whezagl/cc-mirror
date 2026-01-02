@@ -2,7 +2,7 @@ import type { TweakccConfig } from './types.js';
 import { buildZaiTweakccConfig } from './zai.js';
 import { buildMinimaxTweakccConfig } from './minimax.js';
 import { buildOpenRouterTweakccConfig } from './openrouter.js';
-import { buildLiteLLMTweakccConfig } from './litellm.js';
+import { buildCCRouterTweakccConfig } from './ccrouter.js';
 
 export interface BrandPreset {
   key: string;
@@ -26,15 +26,15 @@ const BRAND_PRESETS: Record<string, BrandPreset> = {
   },
   openrouter: {
     key: 'openrouter',
-    label: 'OpenRouter Slate',
-    description: 'Light slate UI with deep blue accents and OpenRouter toolset label.',
+    label: 'OpenRouter Teal',
+    description: 'Light UI with teal/cyan accents and OpenRouter toolset label.',
     buildTweakccConfig: buildOpenRouterTweakccConfig,
   },
-  litellm: {
-    key: 'litellm',
-    label: 'LiteLLM Sky',
-    description: 'Airy sky-blue accents for local LLM workflows.',
-    buildTweakccConfig: buildLiteLLMTweakccConfig,
+  ccrouter: {
+    key: 'ccrouter',
+    label: 'CCRouter Sky',
+    description: 'Airy sky-blue accents for Claude Code Router.',
+    buildTweakccConfig: buildCCRouterTweakccConfig,
   },
 };
 

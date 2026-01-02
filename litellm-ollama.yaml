@@ -1,0 +1,32 @@
+model_list:
+  # Default Sonnet
+  - model_name: claude-sonnet-4-5-20250929
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+
+  # Opus
+  - model_name: claude-opus-4-5-20251101
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+
+  # Haiku
+  - model_name: claude-haiku-4-5-20251001
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+
+  # Legacy names (just in case)
+  - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+
+  - model_name: claude-sonnet-4-20250514
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+
+general_settings:
+  master_key: sk-test-key-1234

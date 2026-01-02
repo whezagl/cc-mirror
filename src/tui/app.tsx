@@ -793,7 +793,7 @@ export const App: React.FC<AppProps> = ({
               if (!modelOpus.trim()) return;
               setScreen('quick-model-sonnet');
             }}
-            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3-opus' : 'ollama/llama3.2:70b'}
+            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3-opus' : 'deepseek,deepseek-reasoner'}
             hint="Used for complex reasoning tasks"
           />
         </Box>
@@ -817,7 +817,7 @@ export const App: React.FC<AppProps> = ({
               if (!modelSonnet.trim()) return;
               setScreen('quick-model-haiku');
             }}
-            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3.5-sonnet' : 'ollama/llama3.2'}
+            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3.5-sonnet' : 'deepseek,deepseek-chat'}
             hint="Default model for most tasks"
           />
         </Box>
@@ -841,7 +841,7 @@ export const App: React.FC<AppProps> = ({
               if (!modelHaiku.trim()) return;
               setScreen('quick-name');
             }}
-            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3-haiku' : 'ollama/llama3.2'}
+            placeholder={providerKey === 'openrouter' ? 'anthropic/claude-3-haiku' : 'ollama,qwen2.5-coder:latest'}
             hint="Used for quick tasks and subagents"
           />
         </Box>
@@ -1090,24 +1090,14 @@ export const App: React.FC<AppProps> = ({
         hint="Default: ~/.local/bin"
         value={binDir}
         onChange={setBinDir}
-        onSubmit={() => setScreen('create-npm-package')}
-      />
-    );
-  }
-
-  if (screen === 'create-npm-package') {
-    return (
-      <InputStep
-        label="NPM package"
-        hint="Default: @anthropic-ai/claude-code"
-        value={npmPackage}
-        onChange={setNpmPackage}
         onSubmit={() => setScreen('create-tweak')}
       />
     );
   }
 
   if (screen === 'create-tweak') {
+    // Prompt packs only available for zai and minimax
+    const supportsPromptPack = providerKey === 'zai' || providerKey === 'minimax';
     return (
       <Box flexDirection="column">
         <Header title="Apply tweakcc?" subtitle="tweakcc patches the binary copy safely." />
@@ -1115,7 +1105,7 @@ export const App: React.FC<AppProps> = ({
           title="Use tweakcc patches"
           onSelect={value => {
             setUseTweak(value);
-            if (!value) {
+            if (!value || !supportsPromptPack) {
               setUsePromptPack(false);
               setScreen('create-skill-install');
             } else {
@@ -1416,7 +1406,7 @@ export const App: React.FC<AppProps> = ({
             value={modelOpus}
             onChange={setModelOpus}
             onSubmit={() => setScreen('manage-models-sonnet')}
-            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3-opus' : 'ollama/llama3.2:70b'}
+            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3-opus' : 'deepseek,deepseek-reasoner'}
             hint="Used for complex reasoning tasks"
           />
         </Box>
@@ -1437,7 +1427,7 @@ export const App: React.FC<AppProps> = ({
             value={modelSonnet}
             onChange={setModelSonnet}
             onSubmit={() => setScreen('manage-models-haiku')}
-            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3.5-sonnet' : 'ollama/llama3.2'}
+            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3.5-sonnet' : 'deepseek,deepseek-chat'}
             hint="Default model for most tasks"
           />
         </Box>
@@ -1458,7 +1448,7 @@ export const App: React.FC<AppProps> = ({
             value={modelHaiku}
             onChange={setModelHaiku}
             onSubmit={() => setScreen('manage-models-saving')}
-            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3-haiku' : 'ollama/llama3.2'}
+            placeholder={selectedVariant.provider === 'openrouter' ? 'anthropic/claude-3-haiku' : 'ollama,qwen2.5-coder:latest'}
             hint="Used for quick tasks and subagents. Press Enter to save."
           />
         </Box>

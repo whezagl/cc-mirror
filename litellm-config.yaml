@@ -1,0 +1,18 @@
+model_list:
+  - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: claude-3-5-sonnet-20241022
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-3-5-haiku-20241022
+    litellm_params:
+      model: claude-3-5-haiku-20241022
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-sonnet-4-20250514
+    litellm_params:
+      model: claude-sonnet-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

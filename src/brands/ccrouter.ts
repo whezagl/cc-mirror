@@ -62,8 +62,8 @@ const palette = {
 };
 
 const theme: Theme = {
-  name: 'LiteLLM Sky',
-  id: 'litellm-sky',
+  name: 'CCRouter Sky',
+  id: 'ccrouter-sky',
   colors: {
     autoAccept: rgb(palette.green),
     bashBorder: rgb(palette.sky),
@@ -129,7 +129,7 @@ const theme: Theme = {
   },
 };
 
-export const buildLiteLLMTweakccConfig = (): TweakccConfig => ({
+export const buildCCRouterTweakccConfig = (): TweakccConfig => ({
   ccVersion: '',
   ccInstallationPath: null,
   lastModified: new Date().toISOString(),
@@ -140,18 +140,18 @@ export const buildLiteLLMTweakccConfig = (): TweakccConfig => ({
     thinkingVerbs: {
       format: '{}... ',
       verbs: [
-        'Buffering',
-        'Caching',
-        'Indexing',
-        'Compiling',
-        'Warming',
-        'Tuning',
-        'Serving',
-        'Linking',
         'Routing',
-        'Optimizing',
-        'Resampling',
-        'Staging',
+        'Switching',
+        'Proxying',
+        'Forwarding',
+        'Dispatching',
+        'Negotiating',
+        'Bridging',
+        'Mapping',
+        'Tunneling',
+        'Resolving',
+        'Balancing',
+        'Indexing',
         'Synchronizing',
         'Finalizing',
       ],
@@ -187,11 +187,11 @@ export const buildLiteLLMTweakccConfig = (): TweakccConfig => ({
     },
     toolsets: [
       {
-        name: 'litellm',
+        name: 'ccrouter',
         allowedTools: '*',
       },
     ],
-    defaultToolset: 'litellm',
-    planModeToolset: 'litellm',
+    defaultToolset: 'ccrouter',
+    planModeToolset: 'ccrouter',
   },
 });
